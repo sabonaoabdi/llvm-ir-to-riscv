@@ -22,6 +22,7 @@ OBJS    := $(SRCS:.s=.o)
 
 compiler: $(COMPILER_BIN)
 
+
 $(COMPILER_BIN): $(COMPILER_SRCS)
 	@mkdir -p $(dir $@)
 	$(CXX) $(CXXFLAGS) $^ -o $@
@@ -66,4 +67,4 @@ test: compiler
 	exit $$fail
 
 clean:
-	rm -rf build $(OBJS) $(BIN)
+	rm -rf build/* $(OBJS) $(BIN)
