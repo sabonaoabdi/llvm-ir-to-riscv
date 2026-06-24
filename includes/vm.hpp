@@ -7,15 +7,18 @@
 
 class VM {
     public:
+    enum InstructionSet { PSH, ADD, MUL, POP, LOAD, HLT };
+    enum Registers { A, B, C, D, E };
+
     explicit VM(std::vector<int> program);
     void run();
     void register_dump() const;
-    enum InstructionSet { PSH, ADD, POP, LOAD, HLT };
-    enum Registers { A, B, C, D, E };
+    int get_register(Registers r) const;
 
     private:
-    int fetch();
-    void eval(int instr);
+    int fetch_instr() const;
+    bool stack_has(std::size_t n);
+    void eval_instr(int instr);
     std::vector<int> program_;
     std::stack<int> stack_;
     std::array<int, 5> registers_ {};
