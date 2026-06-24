@@ -1,0 +1,12 @@
+{
+    "name": "riscv-backend",
+    "build": { "dockerfile": "Dockerfile" },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-vscode.cpptools",
+                "llvm-vs-code-extensions.vscode-clangd"
+            ]
+        }
+    }
+}

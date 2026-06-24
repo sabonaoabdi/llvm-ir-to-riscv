@@ -1,20 +1,19 @@
 #include "../includes/vm.hpp"
 #include <iostream>
 
-VM::VM(std::vector<int> program) : program_(std::move(program)) {}
+VM::VM(std::vector<uint32_t> program) : program_(std::move(program)) {}
 
 void VM::run() {
     while (running_) {
-        eval_instr(fetch_instr());
+        eval_instr(decode_instr());
         ip_++;
     }
 }
 
 void VM::register_dump() const {
-    static const std::array<char, 5> names {'A', 'B', 'C', 'D', 'E'};
     for (unsigned int i = 0; i < registers_.size(); ++i) {
-        std::cout << "Register " 
-        << names.at(i) 
+        std::cout << "Register x" 
+        << i 
         << ": " << registers_.at(i) << std::endl;
     } 
 }
@@ -23,7 +22,7 @@ int VM::get_register(Registers r) const {
     return registers_.at(r);
 }
 
-int VM::fetch_instr() const {
+int VM::decode_instr() const {
     return program_.at(ip_);
 }
 

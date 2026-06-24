@@ -1,10 +1,10 @@
-#include "includes/vm.hpp"
+#include "../includes/vm.hpp"
 
-static const std::vector<int> program {
+static const std::vector<uint32_t> program {
     VM::InstructionSet::PSH, 5,
     VM::InstructionSet::PSH, 5,
-    VM::InstructionSet::MUL,
-    VM::InstructionSet::LOAD, VM::Registers::A,
+    VM::InstructionSet::ADD,
+    VM::InstructionSet::LOAD, VM::Registers::x31,
     VM::InstructionSet::HLT,
 };
 
